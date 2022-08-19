@@ -1,5 +1,5 @@
 import 'package:cubit_study/color_cubit.dart';
-import 'package:cubit_study/counter_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +18,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MultiBlocProvider(providers: [
-        BlocProvider<CounterCubit>(
-          create: (BuildContext context) => CounterCubit(),
-        ),
         BlocProvider<ColorCubit>(
           create: (BuildContext context) => ColorCubit(),
         ),
@@ -63,25 +60,6 @@ class MyHomePage extends StatelessWidget {
                 ),
               );
             }),
-          ),
-        ],
-      ),
-      // BlocBuilder<CounterCubit, int>(
-      //   builder: (context, state) {
-      //     return Text('$state');
-      //   },
-      // ),
-      floatingActionButton: Row(
-        children: [
-          FloatingActionButton(
-            heroTag: 'kadabra',
-            onPressed: () => context.read<CounterCubit>().decrement(),
-            child: Icon(Icons.remove),
-          ),
-          FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().increment(),
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
           ),
         ],
       ),
