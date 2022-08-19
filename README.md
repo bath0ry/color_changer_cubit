@@ -1,6 +1,7 @@
 # cubit_study
 
 A new Flutter project.
+##
 A changer color app for studies cubit/bloc
 
 ## Getting Started
