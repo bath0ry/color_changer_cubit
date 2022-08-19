@@ -33,12 +33,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Counter"),
+        title: Text("Color Changer"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: BlocConsumer<ColorCubit, Color>(listener: (context, state) {
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocConsumer<ColorCubit, Color>(listener: (context, state) {
               if (state == Colors.purple) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   duration: Duration(milliseconds: 500),
@@ -53,15 +54,25 @@ class MyHomePage extends StatelessWidget {
             }, builder: (context, state) {
               return GestureDetector(
                 onTap: () => context.read<ColorCubit>().switchColor(),
-                child: Container(
-                  color: state,
-                  width: 200,
-                  height: 200,
+                child: Column(
+                  children: [
+                    IconButton(
+                        alignment: Alignment.topCenter,
+                        onPressed: () {
+                          context.read<ColorCubit>().switchColor();
+                        },
+                        icon: Icon(Icons.colorize)),
+                    Container(
+                      color: state,
+                      width: 200,
+                      height: 200,
+                    ),
+                  ],
                 ),
               );
             }),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
